@@ -2,7 +2,7 @@
 
 from fastapi import HTTPException
 from passlib.context import CryptContext
-from users.user_models import UserInDB
+from src.users.user_models import UserInDB
 
 # Base de datos falsa para el ejemplo
 fake_users_db = {}

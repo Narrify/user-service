@@ -1,8 +1,8 @@
 # user_handlers.py
 
-from fastapi import APIRouter, Depends
-from users.user_crud import create_user, get_user
-from users.user_models import UserInDB
+from fastapi import APIRouter
+from src.users.user_crud import create_user, get_user
+from src.users.user_models import UserInDB
 
 router = APIRouter()
 
