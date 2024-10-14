@@ -5,11 +5,11 @@ Users router
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.core.auth import get_current_user
 from app.crud.user_crud import (create_user, get_user, get_user_by_username, get_users,
                                 update_user, delete_user)
 from app.db.database import get_db
 from app.core.auth import get_current_user_with_role, get_current_user, oauth2_scheme
+from app.schema.user_schema import UserCreate, UserUpdate, UserResponse
 
 router = APIRouter(
     prefix="/users",
