@@ -1,5 +1,6 @@
 "Schema for user data"
 from pydantic import BaseModel, EmailStr
+from typing import Optional
 
 # pylint: disable=too-few-public-methods
 
@@ -8,7 +9,7 @@ class UserCreate(BaseModel):
     username: str
     email: EmailStr
     password: str
-    role: str
+    role: Optional[str] = None
 
 class UserResponse(BaseModel):
     "User response schema class."
