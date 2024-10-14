@@ -4,7 +4,6 @@ User CRUD
 
 from sqlalchemy.orm import Session
 
-from app.core.auth import hash_password
 from app.models.user import User
 from app.schema.user_schema import UserCreate, UserUpdate
 
@@ -13,6 +12,8 @@ def create_user(db: Session, user: UserCreate):
     """
     Create a new user.
     """
+
+    from app.core.auth import hash_password
 
     db_user = User(
         username=user.username,
