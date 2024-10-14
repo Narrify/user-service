@@ -1,9 +1,13 @@
-"Main file for the FastAPI application"
+"""
+Main file for the FastAPI application
+"""
+
 import uvicorn
 from fastapi import FastAPI, status
+
+from app.api.auth import router as auth_router
 from app.db.database import Base, engine
 from app.router.users_router import router as user_router
-from app.api.auth import router as auth_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -13,6 +17,7 @@ app = FastAPI(
     version="1.0.0",
 )
 
+
 @app.get("/", status_code=status.HTTP_200_OK)
 async def hello_world():
     """
@@ -20,6 +25,7 @@ async def hello_world():
     """
 
     return "Hello World"
+
 
 app.include_router(auth_router)
 app.include_router(user_router)
