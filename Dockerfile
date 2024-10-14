@@ -10,4 +10,4 @@ COPY .. .
 
 EXPOSE 9000
 
-CMD["uvicorn","main:app","--port","8000"]
+CMD ["uvicorn","app.main:app","--port","9000"]
