@@ -1,5 +1,6 @@
 # Python
 htmlcov/
+.coverage
 *.py[cod]
 __pycache__/
 *.pyo
