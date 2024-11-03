@@ -29,12 +29,12 @@ jobs:
 
       - name: Install JMeter
         run: |
-          wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
+          curl https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
           tar -xzf apache-jmeter-5.6.3.tgz
 
       - name: Run JMeter Tests
         run: |
-          ./apache-jmeter-5.5/bin/jmeter -n -t stress-test.jmx -l result.jtl
+          ./apache-jmeter-5.6.3/bin/jmeter -n -t stress-test.jmx -l result.jtl
 
       - name: Upload Results
         uses: actions/upload-artifact@v3
