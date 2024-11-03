@@ -12,7 +12,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
-from app.crud.user_crud import get_user
+from app.crud.user_crud import get_user # pylint: disable=cyclic-import
 from app.db.database import get_db
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
@@ -97,12 +97,15 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
         raise credentials_exception
     return user
 
+
 def get_current_user_with_role(required_role: str):
+    """
+            Get the current user with the required role from the token.
+            """
     def role_dependency(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
         """
         Get the current user with the required role from the token.
         """
-        
         user = get_current_user(token, db)
         if user.role != required_role:
             raise HTTPException(
