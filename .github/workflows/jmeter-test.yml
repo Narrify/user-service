@@ -31,8 +31,7 @@ jobs:
 
       - name: Run FastAPI application
         run: |
-          cd app
-          .venv/Scripts/python main.py
+          .venv/bin/python ./app/main.py
 
       - name: Install JMeter
         run: |
