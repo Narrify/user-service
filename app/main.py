@@ -1,8 +1,8 @@
 """
 Main file for the FastAPI application
 """
-
-import uvicorn, logging
+import logging
+import uvicorn
 from fastapi import FastAPI, status
 
 from app.api.auth import router as auth_router
