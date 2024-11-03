@@ -31,4 +31,5 @@ app.include_router(auth_router)
 app.include_router(user_router)
 
 if __name__ == "__main__":
-    uvicorn.run(app)
+    uvicorn.run("app.main:app",host="localhost", port=8000, workers=6)
+    #asignar la cantidad de workers igual a la cantidad de nucleos del procesador del host
