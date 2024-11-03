@@ -25,7 +25,7 @@ jobs:
       - name: Run FastAPI Application
         run: |
           cd app/
-          nohup uvicorn main:app --host 0.0.0.0 --port 8000 & # Levanta la aplicación en segundo plano
+          nohup python main.py & # Levanta la aplicación en segundo plano
           sleep 5  # Espera un momento para asegurarte de que la aplicación esté completamente levantada
 
       - name: Install JMeter
