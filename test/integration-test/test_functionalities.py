@@ -1,43 +1,62 @@
+"""
+test de funcionalidades
+"""
+# pylint: disable=duplicate-code
+import string
+import random
 from fastapi.testclient import TestClient
 from app.main import app
-import random
-import string
+
 
 client = TestClient(app)
 
-username_random = ''.join(random.choices(string.ascii_letters + string.digits, k=5))
-password_random = ''.join(random.choices(string.ascii_letters + string.digits, k=5))
-email_random = ''.join(random.choices(string.ascii_letters + string.digits, k=5))
-email_random= email_random + "@gmail.com"
-
+USERNAME_RANDOM = ''.join(
+    random.choices(
+        string.ascii_letters +
+        string.digits,
+        k=5))
+PASSWORD_RANDOM = ''.join(
+    random.choices(
+        string.ascii_letters +
+        string.digits,
+        k=5))
+EMAIL_RANDOM = ''.join(
+    random.choices(
+        string.ascii_letters +
+        string.digits,
+        k=5))
+EMAIL_RANDOM = EMAIL_RANDOM + "@gmail.com"
 
 
 def test_create_user():
-    #ARRANGE
+    """
+    crear usuarios
+    """
+    # ARRANGE
     json_body = {
-        "username": username_random,
-        "password": password_random,
-        "email": email_random
+        "username": USERNAME_RANDOM,
+        "password": PASSWORD_RANDOM,
+        "email": EMAIL_RANDOM
     }
 
-    #ACT
-    response = client.post("/users",json=json_body)
+    # ACT
+    response = client.post("/users", json=json_body)
 
-    #ASSERT
-    assert response.status_code == 201 or response.status_code == 200, "create user not return 200 status code"
+    # ASSERT
+    assert response.status_code in (
+        201, 200), "create user not return 200 status code"
 
 
 def test_login_user():
-    #ARRANGE - login-user-no-admin
-    data={"username":username_random, "password":password_random}
+    """
+    testeo de login
+    """
+    # ARRANGE - login-user-no-admin
+    data = {"username": USERNAME_RANDOM, "password": PASSWORD_RANDOM}
 
-    #ACT
+    # ACT
     response = client.post("/auth/token", data=data)
 
-    #ASSERT
+    # ASSERT
     assert response.status_code == 200, "Token not received, login unsuccessful"
     assert response.json()["token_type"] == "bearer", "Token not received"
-
-
-
-
