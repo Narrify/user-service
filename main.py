@@ -4,7 +4,7 @@ Main file for the FastAPI application
 
 import uvicorn, logging
 from fastapi import FastAPI, status
-
+import app
 from app.api.auth import router as auth_router
 from app.db.database import Base, engine
 from app.router.users_router import router as user_router
