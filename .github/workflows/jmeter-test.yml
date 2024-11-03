@@ -1,0 +1,44 @@
+name: JMeter Tests
+
+on:
+  push:
+    branches:
+      - qaenv
+
+jobs:
+  jmeter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set Up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run FastAPI Application
+        run: |
+          python app.main:app &  # Cambia 'main:app' según la estructura de tu aplicación
+          sleep 10  # Espera un momento para asegurarte de que la aplicación esté completamente levantada
+
+      - name: Install JMeter
+        run: |
+          wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz
+          tar -xzf apache-jmeter-5.5.tgz
+
+      - name: Run JMeter Tests
+        run: |
+          ./apache-jmeter-5.5/bin/jmeter -n -t stress-test.jmx -l result.jtl
+
+      - name: Upload Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: jmeter-results
+          path: result.jtl
+
