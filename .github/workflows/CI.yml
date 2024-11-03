@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - dev
+      - qaenv
 
 jobs:
   run:
