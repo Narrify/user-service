@@ -24,13 +24,13 @@ jobs:
 
       - name: Run FastAPI Application
         run: |
-          python app.main:app &  # Cambia 'main:app' según la estructura de tu aplicación
+          python app/main.py &  # Cambia 'main:app' según la estructura de tu aplicación
           sleep 10  # Espera un momento para asegurarte de que la aplicación esté completamente levantada
 
       - name: Install JMeter
         run: |
-          wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz
-          tar -xzf apache-jmeter-5.5.tgz
+          wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
+          tar -xzf apache-jmeter-5.6.3.tgz
 
       - name: Run JMeter Tests
         run: |
