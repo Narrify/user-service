@@ -24,7 +24,7 @@ jobs:
 
       - name: Run FastAPI Application
         run: |
-          cd app
+          cd app/
           nohup python main.py & # Corre la aplicación en segundo plano
           sleep 5  # Espera un momento para asegurarte de que la aplicación esté completamente levantada
 
