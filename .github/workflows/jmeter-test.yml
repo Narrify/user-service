@@ -26,7 +26,7 @@ jobs:
           
 
     env:
-      DATABASE_URL: postgresql://postgres:tisu@localhost:5432/narrify_db
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/narrify_db
       SECRET_KEY: your_secret_key
       ALGORITHM: HS256
       ACCESS_TOKEN_EXPIRE_MINUTES: 30
