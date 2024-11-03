@@ -9,6 +9,25 @@ jobs:
   jmeter:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: narrify_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U test_user"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+          
+
+    env:
+      DATABASE_URL: postgresql://postgres:tisu@localhost:5432/narrify_db
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
