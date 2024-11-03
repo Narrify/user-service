@@ -31,7 +31,7 @@ jobs:
 
       - name: Run FastAPI application
         run: |
-          .venv/bin/uvicorn  app.main:app --host localhost --port 8000
+          .venv/bin/uvicorn app.main:app --host localhost --port 8000
 
       - name: Install JMeter
         run: |
