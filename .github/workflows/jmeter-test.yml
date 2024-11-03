@@ -24,8 +24,9 @@ jobs:
 
       - name: Run FastAPI Application
         run: |
-          python app/main.py &  # Cambia 'main:app' según la estructura de tu aplicación
-          sleep 10  # Espera un momento para asegurarte de que la aplicación esté completamente levantada
+          cd app
+          nohup python main.py & # Corre la aplicación en segundo plano
+          sleep 5  # Espera un momento para asegurarte de que la aplicación esté completamente levantada
 
       - name: Install JMeter
         run: |
