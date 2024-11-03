@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set Up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v2
         with:
           python-version: '3.9'
 
@@ -37,7 +37,7 @@ jobs:
           ./apache-jmeter-5.5/bin/jmeter -n -t stress-test.jmx -l result.jtl
 
       - name: Upload Results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: jmeter-results
           path: result.jtl
