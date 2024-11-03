@@ -18,15 +18,21 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install Dependencies
+      - name: Create and activate virtual environment
         run: |
-          pip install -r requirements.txt
+          python -m venv .venv
+          source .venv/bin/activate  # Linux/Mac
+          # Para Windows: .venv\Scripts\activate
 
-      - name: Run FastAPI Application
+      - name: Install dependencies
         run: |
-          cd app/
-          nohup python main.py & # Levanta la aplicación en segundo plano
-          sleep 5  # Espera un momento para asegurarte de que la aplicación esté completamente levantada
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -r requirements.txt
+
+      - name: Run FastAPI application
+        run: |
+          cd app
+          .venv/Scripts/python main.py
 
       - name: Install JMeter
         run: |

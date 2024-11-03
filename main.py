@@ -4,7 +4,7 @@ Main file for the FastAPI application
 
 import uvicorn, logging
 from fastapi import FastAPI, status
-
+import app
 from app.api.auth import router as auth_router
 from app.db.database import Base, engine
 from app.router.users_router import router as user_router
@@ -35,5 +35,5 @@ app.include_router(auth_router)
 app.include_router(user_router)
 
 if __name__ == "__main__":
-    uvicorn.run("app.main:app",host="localhost", port=8000, workers=1,log_config="../log_conf.yaml")
+    uvicorn.run("main:app",host="localhost", port=8000, workers=1,log_config="../log_conf.yaml")
     #asignar la cantidad de workers igual a la cantidad de nucleos del procesador del host
