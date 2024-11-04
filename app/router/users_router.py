@@ -93,3 +93,40 @@ async def delete_existing_user(
         raise HTTPException(status_code=404, detail="User not found")
 
     return db_user
+
+"""
+@router.post("/generate_story")
+async def generate_story_endpoint(
+    title: str,
+    settings: dict,
+    characters: list,
+    plots: int = 1,
+    endings: int = 1,
+    current_user: UserResponse = Depends(get_current_user)
+):
+   
+    story_instance = Story(title=title, settings=settings, characters=characters, plots=plots, endings=endings)
+    response = story_instance.generate_story()
+    
+    if "error" in response:
+        raise HTTPException(status_code=400, detail=response["error"])
+    
+    return response
+
+@router.post("/generate_dialogue")
+async def generate_dialogue_endpoint(
+    story: str,
+    settings: dict,
+    characters: list,
+    current_user: UserResponse = Depends(get_current_user)
+):
+    
+    dialogue_instance = Dialogue(story=story, settings=settings, characters=characters)
+    response = dialogue_instance.generate_dialogue()
+    
+    if "error" in response:
+        raise HTTPException(status_code=400, detail=response["error"])
+    
+    return response
+
+""" 
