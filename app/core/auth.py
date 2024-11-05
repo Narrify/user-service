@@ -12,7 +12,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
-from app.crud.user_crud import get_user # pylint: disable=cyclic-import
+from app.crud.user_crud import get_user
 from app.db.database import get_db
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
