@@ -1,7 +1,7 @@
 """
 Main file for the FastAPI application
 """
-import logging
+#import logging
 import uvicorn
 from fastapi import FastAPI, status
 
@@ -17,16 +17,16 @@ app = FastAPI(
     version="1.0.0",
 )
 
-logger = logging.getLogger(__name__)
+#logger = logging.getLogger(__name__)
 
-logger.info("Probando el sistema de logging")
+#logger.info("Probando el sistema de logging")
 
 @app.get("/", status_code=status.HTTP_200_OK)
 async def hello_world():
     """
     TODO
     """
-    logger.info("Endpoint '/' llamado OOO")
+    #logger.info("Endpoint '/' llamado OOO")
 
     return "Hello World"
 
@@ -35,5 +35,5 @@ app.include_router(auth_router)
 app.include_router(user_router)
 
 if __name__ == "__main__":
-    uvicorn.run("main:app",host="localhost", port=8000, workers=1,log_config="../log_conf.yaml")
+    uvicorn.run("main:app",host="localhost", port=8000, workers=1)
     #asignar la cantidad de workers igual a la cantidad de nucleos del procesador del host
