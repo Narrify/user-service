@@ -58,8 +58,7 @@ jobs:
       
       - name: Run integration test
         run: |
-          .venv/bin/pip install pytest
-          python -m pytest --disable-warnings
+          .venv/bin/python -m pytest --disable-warnings
           sleep 2
 
       - name: Install JMeter
