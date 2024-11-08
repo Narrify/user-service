@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - qaenv
+      - main
 
 jobs:
   jmeter:
