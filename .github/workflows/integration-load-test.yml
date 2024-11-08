@@ -55,6 +55,11 @@ jobs:
         run: |
           nohup .venv/bin/uvicorn app.main:app --host localhost --port 8000 &
           sleep 5
+      
+      - name: Run integration test
+        run: |
+          .venv/bin/python -m pytest --disable-warnings
+          sleep 2
 
       - name: Install JMeter
         run: |
