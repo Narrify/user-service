@@ -12,3 +12,4 @@ pylint==3.3.1
 httpx==0.27.2
 psycopg2==2.9.10
 email-validator==2.1.1
+python-multipart==0.0.17
