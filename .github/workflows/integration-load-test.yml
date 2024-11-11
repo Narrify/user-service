@@ -69,6 +69,13 @@ jobs:
 
       - name: Run JMeter Tests
         run: |
+          sleep 5
           ./apache-jmeter-5.6.3/bin/jmeter -n -t ./test/load-test/stress-test.jmx -l result.jtl
+
+      - name: Upload JMeter Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: jmeter-results
+          path: result.jtl    
 
 
