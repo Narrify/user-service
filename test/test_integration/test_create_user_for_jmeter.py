@@ -10,14 +10,16 @@ def test_create_user():
     """
     # ARRANGE
     json_body = {
-        "username": "frans12345",
-        "password": "frans",
-        "email": "fransqwerty@gmail.com"
+        "username": "fransds12345qwerty",
+        "password": "fransqwerty",
+        "email": "fransnarrifyqwerty@gmail.com"
     }
 
     # ACT
-    response = client.post("/users", json=json_body)
-
+    try:
+        response = client.post("/users", json=json_body)
+    except Exception as e:
+        print(f"error creando usuario{e}")
     # ASSERT
     assert response.status_code in (
         201, 200), "create user not return 200 status code"
