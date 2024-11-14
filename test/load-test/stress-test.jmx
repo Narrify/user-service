@@ -5,11 +5,13 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Load test - rutas no admin">
         <stringProp name="TestPlan.comments">hacemos un test de carga en las rutas disponibles a usuarios sin acceso de administrador. </stringProp>
-        <intProp name="ThreadGroup.num_threads">100</intProp>
+        <intProp name="ThreadGroup.num_threads">10</intProp>
         <intProp name="ThreadGroup.ramp_time">5</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -33,14 +35,14 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="username" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.value">frans12345</stringProp>
+                <stringProp name="Argument.value">fransds12345qwerty</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">username</stringProp>
               </elementProp>
               <elementProp name="password" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.value">frans</stringProp>
+                <stringProp name="Argument.value">fransqwerty</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">password</stringProp>
@@ -49,7 +51,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor - /auth/token" enabled="true">
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor - /auth/token">
             <stringProp name="JSONPostProcessor.referenceNames">access_token</stringProp>
             <stringProp name="JSONPostProcessor.jsonPathExprs">$.access_token</stringProp>
             <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
@@ -73,7 +75,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -120,7 +122,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="ComparisonVisualizer" testclass="ResultCollector" testname="Comparison Assertion Visualizer">
+        <ResultCollector guiclass="ComparisonVisualizer" testclass="ResultCollector" testname="Comparison Assertion Visualizer" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -158,7 +160,7 @@
           <boolProp name="ResultCollector.success_only_logging">true</boolProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -195,7 +197,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
