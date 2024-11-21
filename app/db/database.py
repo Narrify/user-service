@@ -3,6 +3,7 @@ This module contains the db configuration and related operations.
 """
 
 import os
+import traceback
 
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
@@ -19,8 +20,7 @@ SessionLocal = sessionmaker(bind=engine)
 
 Base = declarative_base()
 
-
-def get_db():
+async def get_db():
     """
     Get the database session.
     """
@@ -28,6 +28,12 @@ def get_db():
         db = SessionLocal()
         yield db
     except Exception as e:
-        print(f"Un error en obtener la sesion de la base de datos, {e}")    
+        # Imprimir el mensaje de error de forma detallada con traceback
+        error_details = traceback.format_exc()
+        print(f"Un error en obtener la sesion de la base de datos: {error_details}{e}")
     finally:
-        db.close()
+        try:
+            db.close()
+        except NameError:
+            # Si 'db' no fue creado debido a un error, evitar un segundo error en el cierre
+            print("La sesión no pudo ser cerrada porque no se estableció una conexión.")
