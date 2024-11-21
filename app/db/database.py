@@ -24,9 +24,10 @@ def get_db():
     """
     Get the database session.
     """
-
-    db = SessionLocal()
     try:
+        db = SessionLocal()
         yield db
+    except Exception as e:
+        print(f"Un error en obtener la sesion de la base de datos, {e}")    
     finally:
         db.close()
